@@ -1,0 +1,47 @@
+<body class="mat-app-background">
+
+<nav class="navbar navbar-expand-lg bg-dark " style="text-decoration-color:white;">
+  <div class="container-fluid">
+  <div class="navbar-header">
+  <a class="navbar-brand" style="color: blue;">The Beginner Pvt Ltd</a>
+  </div>
+  <button class="navbar-toggler" type="button" (click)="toggleNavbar()">
+  <span class="navbar-toggler-icon"></span>
+  </button><br>
+  <br>
+  <div class="collapse navbar-collapse" [ngClass]="{'show':navbarOpen}" style="margin-left: 500px;">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item"><a routerLink="/home" class="nav-link"*ngIf="!isUserLoggedIn">Home </a></li>
+  <li class="nav-item"><a routerLink="/success" class="nav-link"*ngIf="isUserLoggedIn"><img src="assets/img/Home.gif" height="30px" width="35px">  </a></li>
+  <li class="nav-item"><a routerLink="/success" class="nav-link" *ngIf="isUserLoggedIn"></a></li>
+  <li class="nav-item"><a routerLink="/contactus" class="nav-link">Contact</a></li>
+  <li class="nav-item"><a routerLink="/register" class="nav-link" *ngIf="!isUserLoggedIn">Register</a></li>
+  <li class="nav-item"><a routerLink="/admin" class="nav-link" *ngIf="isAdminRole"> Admin</a></li>
+  <li class="nav-item dropdown" *ngIf="isUserRole">
+  <a class="nav-link dropdown-toggle" routerLink="/user/profile" id="dropdown01" data-toggle="dropdown"
+  aria-haspopup="true" aria-expanded="false">
+  User
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown01">
+  <a class="dropdown-item" routerLink="/user/profile">Profile</a>
+  </div>
+  </li>
+  
+  <li class="nav-item" *ngIf="!isUserLoggedIn">
+  <a routerLink="/login" class="nav-link">Login</a>
+  </li>
+  <li class="nav-item" *ngIf="isUserLoggedIn">
+  <a routerLink="/logout" class="nav-link" (click)="logout()">Logout</a>
+  </li>
+  <li class="nav-item" style="margin-left:45px">
+  <a routerLink="#" class="nav-link" style="font-style: italic;color:hsl(56, 90%, 62%);font-weight: 700;font-size: 13px;"
+  *ngIf="isUserLoggedIn">Welcome {{email}} !</a>
+  </li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+  <div class="container">
+  <router-outlet></router-outlet>
+  </div>
+  </body>

@@ -1,0 +1,47 @@
+<body>
+    <div class="container" style="float:left">
+      <div class="form-group">
+        <h1 style="text-align:center ;color: deepskyblue; font-family: cursive; " >Register Yourself</h1>
+        <br>
+        <img src="assets/img/Register.gif" style="margin-top: 8%;" height="300px" width="500px" > 
+        <form #data="ngForm" style="width: 500px;float: right;">
+          <div class="form-group">
+            <div class="form-group">
+  
+                <label style ="color: yellow">Name</label>
+                <input class="form-control" type="text"  minlength="3" name="name" [(ngModel)]="name" #Name required />
+            
+              </div>
+            <label style ="color: yellow">Email</label>
+            <input class="form-control" type="email" name="emailBox" [(ngModel)]="email" #Email="ngModel" required />
+            <span class="help-block" style="color:red" *ngIf="!Email.valid && Email.touched ">please enter valid email!</span>
+            <span class="help-block" style="color:red" *ngIf="!isUserEmailValid">User is already registered</span>
+          </div>
+  
+          <div class="form-group">
+            <label style ="color: yellow">Password</label>
+            <input class="form-control" minlength="6"   type="password" name="passwordBox" [(ngModel)]="password" #uPass required />
+            
+          </div>
+          <div class="form-group">
+  
+            <label style ="color: yellow">Mobile</label>
+            <input class="form-control" type="tel"  minlength="10" name="Mobile" [(ngModel)]="mobile" #Mobile required />
+        
+          </div>
+  
+          <!-- <div class="form-group">
+  
+            <label>Image</label>
+            <input class="form-control" type="file"  name="image" [(ngModel)]="image" #Image required />
+        
+          </div> -->
+          <br />
+          <button style="text-align: center;" type="submit" class="btn btn-primary" (click)="addUser()" [disabled]=!data.valid>Register</button>
+          <button   type="cancel" class="btn btn-danger" (click)="cancel()">Cancel</button>
+        </form>
+      </div>
+    </div>
+  
+  
+  </body>

@@ -1,0 +1,11 @@
+1.Create Database Angular in Mysql
+2.Create Table registration in database angular
+3.Create field named as
+  a)Id int Primary Key
+  b)Name varchar
+  c)Email varchar
+  d)Password varchar
+  e)Mobile varchar
+  f)role varchar
+  g)image varchar
+

@@ -1,0 +1,103 @@
+<h3 style="text-align: center;  color: chartreuse;">Profile Form</h3>
+<div class="container" *ngIf="!isUpdate">
+    <form class="form-group" [formGroup]="profileForm" (ngSubmit)="addUserProfile()">
+        <div style="float:right; padding-right: 12%;" >
+            <label style ="color:  yellowgreen">
+                Id:
+                <input class="form-control" type="text" formControlName="Id" disabled>
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Name:
+                <input class="form-control" type="text" formControlName="Name">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Email:
+                <input class="form-control" type="text" formControlName="Email">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Password:
+                <input class="form-control" type="password" formControlName="Password">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Mobile:
+                <input class="form-control" type="tel" formControlName="Mobile">
+            </label>
+            <br />
+            <!-- <label>
+                <p>Please select your gender:</p>
+                <input type="radio" id="male" name="userGender" value="male" formControlName="userGender">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="userGender" value="female" formControlName="userGender">
+                <label for="female">Female</label><br>
+            </label> -->
+        </div>
+        <div class="form-group" style="margin-left: 300px; ">
+            <img class="form-control" [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:150px;">
+            <br />
+            <input formControlName="userImage" id="file" type="file" (change)="onFileChange($event)" >
+        </div>
+        <!-- <img src="imagePath.value"> #imagePath in 41 -->
+        <br />
+    
+        <div class="container" style="margin-top:300px; text-align: center;" >
+            <!-- <button type="submit" class="form-control" class="btn btn-primary">Submit</button>| -->
+            <button type="submit" class="form-control" class="btn btn-primary" (click)="updateUserProfile()">Update</button>
+            <button type="reset" class="form-control" class="btn btn-danger">Cancel</button>
+        </div>
+    </form>
+</div>
+
+<div class="container" *ngIf="isUpdate">
+    <!-- <h3 style="color: gold ;text-align: center;">Update your profile</h3> -->
+    <form class="form-group" [formGroup]="profileForm">
+        <div style="float:left;">
+            <label style ="color:  yellowgreen">
+                Id:
+                <input class="form-control" type="text" formControlName="Id" disabled>
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Name:
+                <input class="form-control" type="text" formControlName="Name">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Email:
+                <input class="form-control" type="text" formControlName="Email">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Password:
+                <input class="form-control" type="password" formControlName="Password">
+            </label>
+            <br />
+            <label style ="color:  yellowgreen">
+                Mobile:
+                <input class="form-control" type="text" formControlName="Mobile">
+            </label>
+            <!-- <br /> -->
+            <!-- <label>
+                <p>Please select your gender:</p>
+                <input type="radio" id="male" name="userGender" value="male" formControlName="userGender">
+                <label for="male">Male</label><br>
+                <input type="radio" id="female" name="userGender" value="female" formControlName="userGender">
+                <label for="female">Female</label><br>
+            </label> -->
+        </div>
+        <div class="form-group" style="margin-left: 300px;position: fixed;;">
+            <img class="form-control" [src]="imageSrc" *ngIf="imageSrc" style="height: 150px; width:150px;">
+            <br />
+            <input value="imageSrc" id="file" type="file" (change)="onFileChange($event)" formControlName="userImage" #userImage>        </div>
+        <br />
+        <!-- <br>
+        <br> -->
+        <div class="container" style="margin-top:300px;">
+            <button type="submit" class="form-control" class="btn btn-primary" (click)="update()">Update</button>
+           <button type="reset" class="form-control" class="btn btn-danger">Cancel</button>
+        </div>
+    </form>
+</div>

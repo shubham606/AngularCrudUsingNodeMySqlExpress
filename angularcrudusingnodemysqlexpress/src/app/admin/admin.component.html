@@ -1,0 +1,66 @@
+<h2 style="color: blueviolet; text-decoration: underline; text-align: center;"  >Admin's Page</h2>
+<br><br><br><br>
+<div class="container" >
+  <button type="submit" class="btn btn-primary" (click)="getAllUsers()" style="margin-left: 2px;"
+    *ngIf='!updateUserDiv'>{{toggleText}}</button>
+</div>
+
+<div class="container" *ngIf='flag'>
+  <h3>User Data</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="color:violet; ">ID</th>
+        <th style="color: violet;">NAME</th>
+        <th style="color: violet;;">EMAIL</th>
+        <th style="color: violet;">PASSWORD</th>
+        <th style="color: violet;">MOBILE</th>
+        <th style="color: violet;">DELETE</th>
+        <th style="color: violet;">UPDATE</th>
+        <!-- <th>IMAGE</th> -->
+      </tr>
+    </thead>
+    <tr *ngFor="let user of allUsers">
+      <td style ="color: rgb(255, 166, 0)">{{user.Id}}</td>
+      <td style ="color: yellowgreen">{{user.Name}}</td>
+      <td style ="color:  yellowgreen">{{user.Email}}</td>
+      <td style ="color:  yellowgreen">{{user.Password}}</td>
+      <td style ="color:  yellowgreen">{{user.Mobile}}</td>
+      <!-- <td>{{user.image}}</td> -->
+      <td><button type="submit" class="btn btn-primary" (click)="deleteUser(user.Id)"
+          style="margin-left: 2px;">delete user</button> </td>
+      <td><button type="submit" class="btn btn-primary" (click)="updateUser(user.Id)"
+          style="margin-left: 2px;">Update User</button></td>
+      
+    </tr>
+  </table>
+  <td><button type="submit" class="btn btn-primary" (click)="addUser()" style="margin-left: 2px;">Add user</button>
+  </td>
+</div>
+
+<div class="container" *ngIf='updateUserDiv'>
+  <h3>User Data</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="color:violet; ">ID</th>
+        <th style="color: violet;">NAME</th>
+        <th style="color: violet;">PASSWORD</th>
+        <th style="color: violet;">MOBILE</th>
+        <th style="color: violet;;">EMAIL</th>
+        <!-- <th>IMAGE</th> -->
+      </tr>
+    </thead>
+    <tr *ngFor="let user of allUsers">
+      <td><input type="text" value={{user.Id}} disabled #Id /></td>
+      <td><input type="text" value={{user.Name}} #Name /></td>
+      <td><input type="text" value={{user.Password}} #Password /></td>
+      <td><input type="tel" value={{user.Mobile}} #Mobile /></td>
+      <td><input type="text" value={{user.Email}} #Email /></td>
+      <!-- <td><input type="image" value={{user.image}} #Image /></td> -->
+      <td><button type="submit" class="btn btn-primary"
+          (click)="submit(Id.value,Name.value,Password.value,Email.value,Mobile.value)"
+          style="margin-left: 2px;">Submit</button></td>
+    </tr>
+  </table>
+</div>
